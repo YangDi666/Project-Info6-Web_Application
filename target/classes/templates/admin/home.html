@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Home</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	
+	<link rel="stylesheet" type="text/css"
+			th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+		
+</head>
+<body>
+	
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" th:href="@{./home}">Home</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<img th:src="@{/images/Logo.gif}" class="img-responsive center-block" width="600" height="600" alt="Logo" />
+	
+	<div class="container">  
+		
+		<div class="panel-group" style="margin-top:40px">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<span th:utext="${userName}"></span>
+				</div>
+				<p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+				<p class="admin-message-text text-left"><a th:href="@{/employees/employees}">Employees List</a></p>
+				<p class="admin-message-text text-left"><a th:href="@{/countries/countries}">Countries List</a></p>
+				<p class="admin-message-text text-left"><a th:href="@{/statistics/histogram_salary}">Salary Histogram</a></p>
+				<p class="admin-message-text text-left"><a th:href="@{/statistics/decile_salary}">Salary Distribution</a></p>
+				<p class="admin-message-text text-left"><a th:href="@{/swagger-ui.html}">Go To Swagger</a></p>
+				</div>
+		</div>
+
+	</div>
+	<!-- /.container -->
+
+</body>
+</html>

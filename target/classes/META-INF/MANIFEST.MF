@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: yang
+Build-Jdk: 10.0.2
+Implementation-Title: tse-project-info6-spring-boot-jpa
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: tse.info6
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/tse-project-info6-spring-boot-jpa
+Created-By: Maven Integration for Eclipse
+

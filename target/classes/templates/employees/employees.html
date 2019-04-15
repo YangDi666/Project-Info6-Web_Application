@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<title>Employees</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" type="text/css"
+		th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" th:href="@{/admin/home}">Home</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a th:href="@{/logout}">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+<div class="container">
+	<div th:if="!${#lists.isEmpty(employees)}">
+		<h2>Employees List</h2>
+		<table class="table table-striped">
+			<tr>
+				<th>Id</th>
+				<th>FirstName</th>
+				<th>LastName</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>HireDate</th>
+				<th>Job</th>
+				<th>Salary</th>
+				<th>Commission_PCT</th>
+				<th>Manager</th>
+				<th>Department</th>
+				<th>Edit</th>
+			</tr>
+			<tr th:each="emp : ${employees}">
+				<td th:text="${emp.employeeId}"></td>
+				<td th:text="${emp.firstName}"></td>
+				<td th:text="${emp.lastName}"></td>
+				<td th:text="${emp.email}"></td>
+				<td th:text="${emp.phoneNumber}"></td>
+				<td th:text="${emp.hireDate}"></td>
+				<td th:text="${emp.job.jobTitle}"></td>
+				<td th:text="${emp.salary}"></td>
+				<td th:text="${emp.commissionPct}"></td>
+				<td th:text="${emp.managerId}"></td>
+				<td th:text="${emp.department.departmentName}"></td>
+				<td>
+                	<a th:href="${'/employees/edit/' + emp.employeeId}" class="btn btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+				</td>
+			</tr>
+		</table>		
+	</div>
+	<div th:if="${#lists.isEmpty(employees)}">
+    	<tr>
+        	<td>No content exists!</td>
+    	</tr>
+	</div>
+</div>
+
+</body>
+</html>
