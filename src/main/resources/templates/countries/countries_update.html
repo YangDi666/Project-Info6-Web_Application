@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<title>Countries List</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" type="text/css"
+		th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+</head>
+
+<body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <!--<div class="container">-->
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">Edit Country</div>
+                        <div class="panel-body">
+                            <form th:action="@{./}" th:object="${country}" method="post">
+                                <div class="form-group">
+                                    <label for="inputcountryId">ID</label>
+                                    <input type="text" class="form-control" id="inputcountryId" placeholder="ID" th:field="*{countryId}" readonly="readonly" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputCountryName">Country Name</label>
+                                    <input type="text" class="form-control" id="inputCountryName" placeholder="Country Name" th:field="*{countryName}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputRegion">Region</label>
+                                    <select id="inputRegion" th:field="*{region.regionId}">
+  										<option th:each="region : ${regions}" 
+          										th:value="${region.regionId}" 
+          										th:text="${region.regionName}"
+          										th:selected="${region.regionName == country.region.regionName}">
+          								</option>
+									</select>
+                                </div>
+                                <div class="text-right">
+                                    <a th:href="@{/countries/countries}" class="btn btn-default">Cancel</a>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="panel-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

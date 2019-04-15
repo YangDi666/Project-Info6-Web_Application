@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<title>Employees Edit</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<link rel="stylesheet" type="text/css"
+		th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+</head>
+
+<body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <!--<div class="container">-->
+                    <div class="panel panel-default">
+                        <!-- Default panel contents -->
+                        <div class="panel-heading">Edit employee</div>
+                        <div class="panel-body">
+                            <form th:action="@{./}" th:object="${emp}" method="post">
+                                <div class="form-group">
+                                    <label for="inputemployeeId">ID</label>
+                                    <input type="text" class="form-control" id="inputemployeeId" placeholder="ID" th:field="*{employeeId}" readonly="readonly" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputFirstName">First Name</label>
+                                    <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" th:field="*{firstName}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputLastName">Last Name</label>
+                                    <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" th:field="*{lastName}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail">Email</label>
+                                    <input type="text" class="form-control" id="inputEmail" placeholder="Email" th:field="*{email}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputphoneNumber">Phone</label>
+                                    <input type="text" class="form-control" id="inputphoneNumber" placeholder="phoneNumber" th:field="*{phoneNumber}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="HireDate">HireDate</label>
+                                    <input type="text" class="form-control" id="HireDate" placeholder="hireDate" th:field="*{hireDate}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputJob">Job</label>
+                                    <select id="inputJob" th:field="*{job.jobId}">
+  										<option th:each="job : ${jobs}" 
+          										th:value="${job.jobId}" 
+          										th:text="${job.jobId}"
+          										th:selected="${job.jobId == emp.job.jobId}">
+          								</option>
+									</select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Salary">Salary</label>
+                                    <input type="text" class="form-control" id="Salary" placeholder="Salary" th:field="*{salary}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="Commission_PCT">Commission_PCT</label>
+                                    <input type="text" class="form-control" id="Commission_PCT" placeholder="Commission_PCT" th:field="*{commissionPct}" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputManager">Manager</label>
+                                    <select id="inputManager" th:field="*{managerId}">
+  										<option th:each="manager : ${managers}" 
+          										th:value="${manager.employeeId}" 
+          										th:text="${manager.lastName}"
+          										th:selected="${manager.employeeId == emp.managerId}">
+          								</option>
+									</select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputDepartment">Department</label>
+                                    <select id="inputDepartment" th:field="*{department.departmentId}">
+  										<option th:each="department : ${departments}" 
+          										th:value="${department.departmentId}" 
+          										th:text="${department.departmentName}"
+          										th:selected="${department.departmentId == department.departmentId}">
+          								</option>
+									</select>
+                                </div>
+                                <div class="text-right">
+                                    <a th:href="@{/countries/countries}" class="btn btn-default">Cancel</a>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="panel-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>
